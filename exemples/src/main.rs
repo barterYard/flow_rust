@@ -5,6 +5,7 @@ use flow_rs::proto::{
         access_api_client::AccessApiClient, BlockResponse, GetBlockByHeightRequest,
         GetCollectionByIdRequest, GetLatestBlockRequest, GetTransactionsByBlockIdRequest,
     },
+    entities::Event,
     execution::GetTransactionResultRequest,
 };
 use flow_rs::FlowNetwork;
@@ -70,13 +71,9 @@ async fn main() {
                     }
                 };
                 for event in tran.events {
-                    if let ValueOwned::Event(event_p) =
-                        serde_json::from_slice(&event.payload).unwrap()
-                    {
-                        let r = event_p.parse_payload();
-                        println!("{:?}", r);
-                        println!("{:?}", event_p.id);
-                    }
+                    let event_p = event.parse_payload().unwrap();
+
+                    println!("{:?}", event_p.id);
                 }
             }
         }
