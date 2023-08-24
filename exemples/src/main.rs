@@ -1,13 +1,13 @@
 use cadence_json::ValueOwned;
-use flow::access::{GetTransactionRequest, PingRequest, SendTransactionRequest};
-use flow::proto::{
+use flow_rs::access::{GetTransactionRequest, PingRequest, SendTransactionRequest};
+use flow_rs::proto::{
     access::{
         access_api_client::AccessApiClient, BlockResponse, GetBlockByHeightRequest,
         GetCollectionByIdRequest, GetLatestBlockRequest, GetTransactionsByBlockIdRequest,
     },
     execution::GetTransactionResultRequest,
 };
-use flow::FlowNetwork;
+use flow_rs::FlowNetwork;
 use std::str;
 
 #[tokio::main]
