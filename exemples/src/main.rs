@@ -70,10 +70,12 @@ async fn main() {
                     }
                 };
                 for event in tran.events {
-                    if let ValueOwned::Event(event_payload) =
+                    if let ValueOwned::Event(event_p) =
                         serde_json::from_slice(&event.payload).unwrap()
                     {
-                        println!("{:?}", event_payload.id);
+                        let r = event_p.parse_payload();
+                        println!("{:?}", r);
+                        println!("{:?}", event_p.id);
                     }
                 }
             }
