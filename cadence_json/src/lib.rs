@@ -65,7 +65,8 @@ pub struct PathOwned {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub struct StaticType {
     #[serde(rename = "typeID")]
-    pub type_id: String,
+    pub type_id: Option<String>,
+    pub kind: String,
 }
 
 #[derive(Serialize, Clone, Debug, PartialEq, Eq)]

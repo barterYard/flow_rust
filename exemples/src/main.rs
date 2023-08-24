@@ -7,32 +7,18 @@ use flow::proto::{
     },
     execution::GetTransactionResultRequest,
 };
+use flow::FlowNetwork;
 use std::str;
 
 #[tokio::main]
 async fn main() {
-    let mut client = AccessApiClient::mainnet().await.expect("error");
-    // let trans = Transaction {
-    //     arguments: todo!(),
-    //     authorizers: todo!(),
-    //     envelope_signatures: todo!(),
-    //     payload_signatures: todo!(),
-    //     gas_limit: todo!(),
-    //     payer: todo!(),
-    //     reference_block_id: todo!(),
-    //     script: todo!(),
-    //     proposal_key: todo!(),
-    // };
-    // client
-    //     .send_transaction(SendTransactionRequest {
-    //         transaction: Some(trans),
-    //     })
-    //     .await;
-    let _ = client.ping(PingRequest {}).await;
+    let mut client = FlowNetwork::Mainnet.get_flow_client().await;
+
+    let mut latest_block_height = 59430117;
     loop {
         let r = match client
-            .get_latest_block(GetLatestBlockRequest {
-                is_sealed: true,
+            .get_block_by_height(GetBlockByHeightRequest {
+                height: latest_block_height,
                 full_block_response: true,
             })
             .await
@@ -43,7 +29,9 @@ async fn main() {
                 continue;
             }
         };
-        let block = r.block.unwrap();
+        let block = r.clone().block.unwrap();
+
+        latest_block_height += 1;
 
         println!(
             "block height: {}, id: {:?}",
