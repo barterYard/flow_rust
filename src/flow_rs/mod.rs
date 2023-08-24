@@ -6,3 +6,4 @@ pub use client::FlowNetwork;
 pub use proto::access;
 pub use proto::entities;
 pub use proto::execution;
+pub use tonic::transport::Channel;
