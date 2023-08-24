@@ -1,5 +1,5 @@
-use cadence_json::ValueOwned;
 use flow_rs::access::{GetTransactionRequest, PingRequest, SendTransactionRequest};
+use flow_rs::cadence_json::ValueOwned;
 use flow_rs::proto::{
     access::{
         access_api_client::AccessApiClient, BlockResponse, GetBlockByHeightRequest,

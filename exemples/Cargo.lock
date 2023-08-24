@@ -286,7 +286,6 @@ dependencies = [
 name = "exemples"
 version = "0.1.0"
 dependencies = [
- "cadence_json",
  "flow_rs",
  "hex",
  "serde_json",
