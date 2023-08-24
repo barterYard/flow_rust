@@ -17,13 +17,13 @@ serde_json = "1.0.105"
 tonic = "0.9.2"
 cadence_json = { version = "0.1.2", path = "cadence_json/" }
 
-p256 = "0.13.2"
-ecdsa = "0.16.8"
-hex = "0.4.3"
-tiny-keccak = { version = "2.0.2", features = ["sha3"] }
-secp256k1 = "0.27.0"
-futures-timer = "3.0.2"
-rlp = "0.5.2"
+# p256 = "0.13.2"
+# ecdsa = "0.16.8"
+# hex = "0.4.3"
+# tiny-keccak = { version = "2.0.2", features = ["sha3"] }
+# secp256k1 = "0.27.0"
+# futures-timer = "3.0.2"
+# rlp = "0.5.2"
 
 [build-dependencies]
 glob = "0.3.1"
