@@ -8,14 +8,19 @@ use flow_rs::proto::{
     entities::Event,
     execution::GetTransactionResultRequest,
 };
+use flow_rs::Channel;
 use flow_rs::FlowNetwork;
 use std::str;
 
 #[tokio::main]
 async fn main() {
-    let mut client = FlowNetwork::Mainnet.get_flow_client().await;
+    let mut client = AccessApiClient::<Channel>::get_client(
+        "http://access-001.mainnet1.nodes.onflow.org:9000".to_string(),
+    )
+    .await
+    .unwrap();
 
-    let mut latest_block_height = 59430117;
+    let mut latest_block_height = 7652359;
     loop {
         let r = match client
             .get_block_by_height(GetBlockByHeightRequest {
@@ -72,7 +77,6 @@ async fn main() {
                 };
                 for event in tran.events {
                     let event_p = event.parse_payload().unwrap();
-
                     println!("{:?}", event_p.id);
                 }
             }
