@@ -9,13 +9,14 @@ edition = "2021"
 name = "flow_rs"
 
 [dependencies]
-pbjson = "0.5.1"
-pbjson-types = "0.5.1"
-prost = "0.11.9"
-serde = "1.0.186"
-serde_json = "1.0.105"
-tonic = "0.9.2"
+pbjson = "0.6.0"
+pbjson-types = "0.6.0"
+prost = "0.12.3"
+serde = "1.0.196"
+serde_json = "1.0.113"
+tonic = "0.10.2"
 cadence_json = { version = "0.1.2", path = "cadence_json/" }
+futures-core = "0.3.30"
 
 # p256 = "0.13.2"
 # ecdsa = "0.16.8"
@@ -27,4 +28,4 @@ cadence_json = { version = "0.1.2", path = "cadence_json/" }
 
 [build-dependencies]
 glob = "0.3.1"
-tonic-build = "0.9.2"
+tonic-build = "0.10.2"
